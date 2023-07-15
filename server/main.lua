@@ -8,12 +8,12 @@ elseif GetResourceState('qb-core') == 'started' then
 end
 
 if Framework == 'qb' then
+local src = source
     QBCore.Commands.Add('adminzone', '', {}, false, function(source, args)
-        local src = source
         TriggerClientEvent('sd-adminzone:client:spawnzone', -1, src)
     end,'admin')
 else
     ESX.RegisterCommand('adminzone', 'admin', function(xPlayer, args, showError)
-        args.playerId.triggerEvent('sd-adminzone:client:spawnzone', -1)
-    end, true, { help = 'Test oil rig robbery', validate = true })
+        args.playerId.triggerEvent('sd-adminzone:client:spawnzone', -1, src)
+    end, true, { help = 'Create Admin Zone', validate = true })
 end
